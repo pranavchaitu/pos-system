@@ -7,6 +7,7 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
+import Official from './src/screen/Official';
 
 function SettingsScreen() {
   return (
@@ -26,7 +27,7 @@ export default function App() {
         tabBarShowLabel : false,
         tabBarActiveTintColor : "#E96E6E"
       }}>
-        <Tab.Screen name="HOME" component={HomeScreen} options={{
+        <Tab.Screen name="HOME" component={Official} options={{
             tabBarIcon : ({ size,color }) => <Entypo name="home" size={size}
             color={color}/>
         }}/>
