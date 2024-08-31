@@ -6,7 +6,7 @@ function Header() {
   return (
     <View className='flex flex-row justify-between py-5 items-center'>
         <View className='rounded-full bg-white p-2'>
-            <Entypo name={"grid"} size={30} color={"#E96E6E"}/>
+            <Entypo name={"grid"} size={30} color={"green"}/>
         </View>
         <Image source={require('../assets/dp.png')} className='w-11 h-11 rounded-full'/>
     </View>

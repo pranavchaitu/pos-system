@@ -1,0 +1,23 @@
+{
+    "foodData": [
+      {
+        "id" : 0,
+        "name": "Avocado Salad",
+        "image": "https://e7.pngegg.com/pngimages/166/140/png-clipart-greek-salad-caesar-salad-chicken-salad-greek-cuisine-spinach-salad-greek-salad-leaf-vegetable-food-thumbnail.png",
+        "time": "15",
+        "rating": "4.7",
+        "price": "12.00",
+        "tags": ["Healthy", "Low Calorie"]
+      },
+      {
+        "id" : 1,
+        "name": "Margherita Pizza",
+        "image": "https://e7.pngegg.com/pngimages/166/140/png-clipart-greek-salad-caesar-salad-chicken-salad-greek-cuisine-spinach-salad-greek-salad-leaf-vegetable-food-thumbnail.png",
+        "time": "25",
+        "rating": "4.5",
+        "price": "18.00",
+        "tags": ["Popular Choices", "Cheesy"]
+      }
+    ]
+  }
+  

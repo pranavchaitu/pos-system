@@ -2,12 +2,13 @@ import * as React from 'react';
 import { Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import HomeScreen from './src/screen/HomeScreen';
 import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
-import Official from './src/screen/Official';
+import HomeScreen from './src/screen/HomeScreen';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import ProductDetailsScreen from './src/screen/ProductDetailsScreen';
 
 function SettingsScreen() {
   return (
@@ -18,6 +19,21 @@ function SettingsScreen() {
 }
 
 const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator()
+
+function MyHomeStack() {
+  return <>
+    <Stack.Navigator
+      screenOptions={{
+        headerShown : false
+      }}
+      initialRouteName='PRODUCT_DETAILS'    
+    >
+      <Stack.Screen name="HOME" component={HomeScreen} />
+      <Stack.Screen name="PRODUCT_DETAILS" component={ProductDetailsScreen} />
+    </Stack.Navigator>
+  </>
+}
 
 export default function App() {
   return (
@@ -27,7 +43,7 @@ export default function App() {
         tabBarShowLabel : false,
         tabBarActiveTintColor : "#E96E6E"
       }}>
-        <Tab.Screen name="HOME" component={Official} options={{
+        <Tab.Screen name="HOME_STACK" component={MyHomeStack} options={{
             tabBarIcon : ({ size,color }) => <Entypo name="home" size={size}
             color={color}/>
         }}/>
