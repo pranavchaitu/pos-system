@@ -42,42 +42,50 @@ function ProductDetailsScreen() {
   return (
     <View className='bg-green-500 flex h-screen relative'>
       <View className='p-5'>
-        <Header />
+        <Header isHome={false}>
+          <Text className='text-xl font-semibold text-white'>Food Details</Text>
+        </Header>
       </View>
       <Image 
         source={{ uri: item.image }}
-        className='w-60 h-60 absolute z-10 top-48 left-20 rounded-full'
+        className='w-60 h-60 absolute z-10 top-44 left-20 rounded-full'
       />
       <View className='bg-white h-screen mt-44 rounded-t-3xl pt-32 px-5'>
         <View className='flex-row justify-between'>
-          <View>
-            <Text className='text-xl font-bold text-black'>{item.name}</Text>
-            <Text className='text-green-500 text-lg font-semibold'>${item.price}</Text>
+          <View className='space-y-2'>
+            <Text className='text-2xl font-bold text-black'>{item.name}</Text>
+            <Text className='text-green-500 text-3xl font-bold'>${item.price/100}.00</Text>
           </View>
-          <View className='bg-green-500 px-5 rounded-3xl flex justify-center items-center'>
+          <View className='bg-green-500 my-4 px-5 rounded-3xl flex justify-center items-center'>
             <View className='flex-row gap-4 items-center'>
               <TouchableOpacity onPress={() => count > 1 && setCount(count-1)}>
-                <Text className='text-xl font-bold text-white'>-</Text>
+                <Text className='text-2xl font-bold text-white'>-</Text>
               </TouchableOpacity>
-              <Text className='text-lg border-l border-r px-2 border-green-600 font-bold text-white'>
+              <Text className='text-2xl border-l border-r px-2 border-green-600 font-bold text-white'>
                 {count}
               </Text>  
               <TouchableOpacity onPress={() => count < 20 && setCount(count+1)}>
-                <Text className='text-xl font-bold text-white'>+</Text>
+                <Text className='text-2xl font-bold text-white'>+</Text>
               </TouchableOpacity>  
             </View>
           </View>
         </View>
-        <View className='mt-5 flex-row items-center'>
-          <Entypo name="star" color={"gold"} size={22}/>
-          <Text className='ml-2 mr-20 text-lg'>{item.rating}</Text>
-          <Fontisto name="blood-drop" size={22} color={"red"}/>
-          <Text className='ml-2 mr-16 text-lg'>100 Kcal</Text>
-          <AntDesign name="clockcircle" size={22} color={"gold"}/>
-          <Text className='ml-2 text-lg'>{item.time} min</Text>
-        </View>  
+        <View className='mt-5 flex-row items-center justify-between'>
+          <View className='flex-row items-center'>
+            <Entypo name="star" size={22} color={"gold"}/>
+            <Text className='ml-2 text-lg text-gray-500'>{item.rating}</Text>  
+          </View>
+          <View className='flex-row items-center'>
+            <Fontisto name="blood-drop" size={22} color={"red"}/>
+            <Text className='ml-2 text-lg'>100 Kcal</Text>  
+          </View>
+          <View className='flex-row items-center'>
+            <AntDesign name="clockcircle" size={22} color={"gold"}/>
+            <Text className='ml-2 text-lg'>{item.time} min</Text>  
+          </View>
+          </View>  
         <View className='mt-8'>
-          <Text className='text-lg font-bold text-black'>
+          <Text className='text-xl mb-1 font-bold text-black'>
             About food
           </Text>
           <Text>

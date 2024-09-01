@@ -2,38 +2,38 @@
     "foodData": [
       {
         "id" : 0,
-        "name": "Avocado Salad",
+        "name": "Salad Ceaser",
         "image": "https://e7.pngegg.com/pngimages/166/140/png-clipart-greek-salad-caesar-salad-chicken-salad-greek-cuisine-spinach-salad-greek-salad-leaf-vegetable-food-thumbnail.png",
         "time": "15",
         "rating": "4.7",
-        "price": "12.00",
+        "price": "1200",
         "tags": ["Healthy", "Low Calorie"]
       },
       {
         "id" : 1,
-        "name": "California roll Sushi",
-        "image": "https://e7.pngegg.com/pngimages/654/912/png-clipart-california-roll-sushi-pizza-sushi-pizza-makizushi-sushi-food-recipe-thumbnail.png",
-        "time": "15",
+        "name": "Spaghetti",
+        "image": "https://e7.pngegg.com/pngimages/642/1022/png-clipart-pasta-dish-italian-cuisine-pizza-naporitan-spaghetti-alla-puttanesca-al-dente-top-view-spaghetti-bolognese-food-recipe-thumbnail.png",
+        "time": "17",
         "rating": "4.2",
-        "price": "20.00",
+        "price": "2000",
         "tags": ["Popular Choices", "Cheesy"]
       },
       {
         "id" : 2,
-        "name": "tomato cherry",
-        "image": "https://e7.pngegg.com/pngimages/1012/584/png-clipart-tomato-cherry-with-lettuce-and-bell-pepper-salad-juice-caesar-salad-greek-salad-mesclun-fruit-and-vegetable-salad-leaf-vegetable-food-thumbnail.png",
+        "name": "Italian Pasta",
+        "image": "https://e7.pngegg.com/pngimages/535/859/png-clipart-italian-cuisine-pasta-organic-food-restaurant-foods-food-recipe-thumbnail.png",
         "time": "22",
         "rating": "4.8",
-        "price": "25.00",
+        "price": "2500",
         "tags": ["Popular Choices", "Cheesy"]
       },
       {
         "id" : 3,
-        "name": "Margherita Pizza",
-        "image": "https://e7.pngegg.com/pngimages/1012/584/png-clipart-tomato-cherry-with-lettuce-and-bell-pepper-salad-juice-caesar-salad-greek-salad-mesclun-fruit-and-vegetable-salad-leaf-vegetable-food-thumbnail.png",
-        "time": "22",
-        "rating": "4.8",
-        "price": "25.00",
+        "name": "Mattar Paneer",
+        "image": "https://e7.pngegg.com/pngimages/558/95/png-clipart-cooked-food-with-peas-toppings-d-mattar-paneer-indian-cuisine-shahi-paneer-palak-paneer-paneer-tikka-masala-indian-food-soup-food-thumbnail.png",
+        "time": "30",
+        "rating": "4.1",
+        "price": "3200",
         "tags": ["Popular Choices", "Cheesy"]
       }
     ]

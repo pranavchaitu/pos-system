@@ -2,9 +2,8 @@ import React, { useState } from 'react'
 import { Image, Text, TouchableOpacity, View } from 'react-native'
 
 function CartItem({ item } : any) {
-  const [count,setCount] = useState(item.count)
   return (
-    <View className='flex-row items-center gap-2 rounded-lg h-28 p-5 bg-gray-50'>
+    <View className='flex-row items-center gap-2 rounded-3xl border mx-1 px-2 my-2 h-28 bg-[#f7f7f7]'>
       <Image
         source={{uri : item.image}}
         className="h-20 w-20 rounded-full"
@@ -14,21 +13,11 @@ function CartItem({ item } : any) {
         <View className='flex-row justify-between'>
           <View className='flex-row gap-1 items-center'>
             <Text>$</Text>
-            <Text className='text-black font-bold text-2xl'>{item.price}</Text>
+            <Text className='text-black font-bold text-2xl'>{item.price/100}.00</Text>
           </View>
-          <View className='bg-green-500 px-5 rounded-3xl flex justify-center items-center'>
-            <View className='flex-row gap-4 items-center'>
-              <TouchableOpacity onPress={() => count > 1 && setCount(count-1)}>
-                <Text className='text-xl font-bold text-white'>-</Text>
-              </TouchableOpacity>
-              <Text className='text-lg border-l border-r px-2 border-green-600 font-bold text-white'>
-                {count}
-              </Text>  
-              <TouchableOpacity onPress={() => count < 20 && setCount(count+1)}>
-                <Text className='text-xl font-bold text-white'>+</Text>
-              </TouchableOpacity>  
-            </View>
-          </View>
+          <Text className='border border-gray-200 rounded-lg px-3 bg-green-500 text-center pt-1 font-bold text-base text-white'>
+            Quantity : {item.count}
+          </Text>
         </View>
       </View>
     </View>

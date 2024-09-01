@@ -3,14 +3,14 @@ import { Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Entypo from 'react-native-vector-icons/Entypo';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
-import HomeScreen from './src/screen/HomeScreen';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import ProductDetailsScreen from './src/screen/ProductDetailsScreen';
 import CartScreen from './src/screen/CartScreen';
 import { CartContext, CartProvider } from './src/context/CartContext';
+import HomeScreen from './src/screen/HomeScreen';
+
 function SettingsScreen() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -51,10 +51,6 @@ export default function App() {
               tabBarIcon : ({ size,color }) => <Entypo name="home" size={size}
               color={color}/>
           }}/>
-          {/* <Tab.Screen name="REORDER" component={HomeScreen} options={{
-              tabBarIcon : ({ size,color }) => <MaterialIcons name="reorder" size={size}
-              color={color}/>
-          }}/> */}
           <Tab.Screen name="CART" component={CartScreen} options={{
               tabBarIcon : ({ size,color }) => {
                 const { cart } : any = useContext(CartContext)

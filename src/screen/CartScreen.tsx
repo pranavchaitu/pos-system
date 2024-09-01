@@ -1,28 +1,24 @@
 import React, { useContext } from 'react'
-import { Text, TouchableOpacity, View } from 'react-native'
-import Ionicons from 'react-native-vector-icons/Ionicons'
+import { Text, View } from 'react-native'
 import Entypo from 'react-native-vector-icons/Entypo'
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import LinearGradient from 'react-native-linear-gradient'
-import { useNavigation } from '@react-navigation/native'
 import CartItem from '../components/CartItem'
 import { FlatList } from 'react-native'
 import Button from '../components/Button'
 import { CartContext } from '../context/CartContext'
+import Header from '../components/Header'
 
 function CartScreen() {
-  const navigation : any = useNavigation()
   const { cart } : any = useContext(CartContext)
+  const total = cart.reduce((acc: number, item: any) => acc + (Number(item.price) * Number(item.count)), 0);
   return (
-    <LinearGradient colors={["#FDF0F3","#FFFBFC"]} className='flex h-screen px-5 '>
+    <LinearGradient colors={["#FDF0F3","#FFFBFC"]} className='pt-5 flex h-screen px-5 '>
       {/* <Header /> */}
-      <View className='flex-row items-center mt-10'>
-        <TouchableOpacity onPress={() => navigation.navigate("HOME")} className='bg-[#dfdcdc] p-2 rounded-lg'>
-          <Ionicons name={"chevron-back"} size={30}/>
-        </TouchableOpacity>
-        <Text className='ml-20 text-3xl font-semibold'>My Cart</Text>
-      </View>
+      <Header isHome={false}>
+        <Text className='text-3xl font-semibold'>My Cart</Text>
+      </Header>
       {/* cart items list */}
       <FlatList
         className='mt-10' 
@@ -39,7 +35,7 @@ function CartScreen() {
               <View className='flex gap-2 mt-3'>
                 <View className='flex-row justify-between'>
                   <Text className='text-lg '>Subtotal</Text>
-                  <Text className='text-lg font-bold'>250 USD</Text>
+                  <Text className='text-lg font-bold'>{total/100}.00 USD</Text>
                 </View>
                 <View className='flex-row justify-between'>
                   <Text className='text-lg '>Total (icnl. VAT)</Text>
@@ -52,7 +48,7 @@ function CartScreen() {
               </View>
               <View className='flex-row justify-between border-t mt-3 pt-2 border-gray-300'>
                 <Text className='text-lg '>Total</Text>
-                <Text className='text-xl text-blue-500 font-bold'>260 USD</Text>
+                <Text className='text-xl text-blue-500 font-bold'>{total/100 + 16+ 26}.00 USD</Text>
               </View>    
               {/* payment methods */}
               <Text className='font-bold text-3xl text-black mt-8'>

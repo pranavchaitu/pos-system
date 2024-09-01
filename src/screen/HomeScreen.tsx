@@ -1,32 +1,44 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FlatList, Image, Text, TextInput, View } from 'react-native'
-import Octicons from "react-native-vector-icons/Octicons"
-import Entypo from "react-native-vector-icons/Entypo"
+import FontAwesome from "react-native-vector-icons/FontAwesome"
+import FontAwesome6 from "react-native-vector-icons/FontAwesome6"
 import Fontisto from "react-native-vector-icons/Fontisto"
-import Cetegory from '../components/Cetegory'
+import Category from '../components/Category'
 import FoodItem from '../components/FoodItem'
 import LinearGradient from 'react-native-linear-gradient'
 import data from "../../data.json"
+import Header from '../components/Header'
 
 const categories = [
-  "Trending Now",
-  "Popular Choices",
-  "Deals & Offers",
-  "Top Rated"
+  "Food",
+  "Vegetables",
+  "Non-Veg",
+  "Fruits",
 ];
 
 function HomeScreen() {
-  const [selectedCategory,setSelectedCategory] = useState("Trending Now")
+  const [selectedCategory,setSelectedCategory] = useState("Food")
   const [foodData,setFoodData] = useState(data.foodData)
-  // State to track if the heart icon is toggled or not
-  // const [liked, setLiked] = useState(false);
+
+  useEffect(() => {
+    // the sort function should be mafe according to the need and data
+    if(selectedCategory == "Fruits") {
+      setFoodData([data.foodData[0]])
+    } else if(selectedCategory == "Vegetables") {
+      setFoodData([data.foodData[2],data.foodData[3]])
+    } else if(selectedCategory == "Non-Veg") {
+      setFoodData([data.foodData[1],data.foodData[2]])
+    } else {
+      setFoodData(data.foodData)
+    }
+  },[selectedCategory])
 
   function handleLiked(item : any) {
     const newItems = foodData.map((prod) => {
       if(prod.id === item.id) {
         return {
           ...prod,
-          isLiked : true
+          isLiked : !item.isLiked
         }
       }
       return prod
@@ -38,33 +50,26 @@ function HomeScreen() {
     <LinearGradient colors={["#FDF0F3","#FFFBFC"]} className='flex h-screen p-5'>
 
       {/* Header */}
-      <View className='flex-row justify-between py-5 items-center'>
-        <View className='rounded-lg bg-green-500 p-2'>
-          <Entypo name={"grid"} size={30} color={"#ffffff"}/>
-        </View>
+      <Header isHome={true} >
         <View className='text-green-500 flex-row gap-2 items-center'>
-          <Octicons name="location" size={22} color={"green"}/>
-          <Text className='text-lg text-gray-400'>
+          <FontAwesome6 name="location-dot" size={22} color={"#22c55e"}/>
+          <Text className='text-xl text-gray-400'>
             Yanam, India 
           </Text>
         </View>
-        <Image source={require('../assets/dp.png')} className='w-11 h-11 rounded-lg'/>
-      </View>
+      </Header>
 
       {/* name and input section */}
-      <Text className='text-2xl font-medium text-green-500'>
+      <Text className='text-3xl font-semibold text-green-500'>
         Hi Pranav
       </Text>
-      <Text className='text-4xl font-bold mt-3 text-black'>
+      <Text className='text-4xl font-bold mt-3 text-gray-600'>
         Find your food
       </Text>
       {/* input box */}
-      <View className='bg-white  my-6 py-1 px-4 rounded-xl flex-row items-center'>
+      <View className='bg-[#eef9eb] border border-gray-200 my-6 py-1 px-4 rounded-xl flex-row items-center'>
         <Fontisto name="search" size={22} color={"green"}/>
-        <TextInput placeholder='Search Food' placeholderTextColor={"gray"} className=' text-2xl ml-4 w-72'/>
-        {/* <View className='rounded-lg bg-green-500 p-2'>
-          <FontAwesome name="filter" size={22} color={"white"}/>
-        </View> */}
+        <TextInput placeholder='Search Food'  placeholderTextColor={"gray"} className=' text-2xl ml-4 w-72'/>
       </View>
       {/* the items list */}
       <FlatList 
@@ -74,11 +79,12 @@ function HomeScreen() {
             className='mb-5'
             data={categories}
             renderItem={({ item }) => (
-              <Cetegory 
+              <Category 
                 item={item} 
                 selectedCategory={selectedCategory} 
                 setSelectedCategory={setSelectedCategory}/>
-              )}
+              )
+            }
             keyExtractor={item => item}
             horizontal={true}
             showsHorizontalScrollIndicator={false}
