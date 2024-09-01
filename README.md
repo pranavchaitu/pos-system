@@ -79,9 +79,9 @@ To learn more about React Native, take a look at the following resources:
 - [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
 
 
-
-// todo - reusable button
-// set state pass
 // beautify UI
+- 
+- 
 // new images needed
+// yt
 // video

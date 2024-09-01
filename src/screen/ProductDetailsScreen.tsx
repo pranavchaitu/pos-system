@@ -37,6 +37,8 @@ function ProductDetailsScreen() {
     navigation.navigate("CART")
   };
 
+  // const condition = count > 1 && count < 20
+
   return (
     <View className='bg-green-500 flex h-screen relative'>
       <View className='p-5'>
@@ -52,11 +54,19 @@ function ProductDetailsScreen() {
             <Text className='text-xl font-bold text-black'>{item.name}</Text>
             <Text className='text-green-500 text-lg font-semibold'>${item.price}</Text>
           </View>
-          <TouchableOpacity onPress={() => {
-            setCount(count+1)
-          }} className='bg-green-500 px-5 rounded-3xl flex justify-center items-center'>
-            <Text className='text-lg font-bold text-white'>-  {count}  +</Text>
-          </TouchableOpacity>
+          <View className='bg-green-500 px-5 rounded-3xl flex justify-center items-center'>
+            <View className='flex-row gap-4 items-center'>
+              <TouchableOpacity onPress={() => count > 1 && setCount(count-1)}>
+                <Text className='text-xl font-bold text-white'>-</Text>
+              </TouchableOpacity>
+              <Text className='text-lg border-l border-r px-2 border-green-600 font-bold text-white'>
+                {count}
+              </Text>  
+              <TouchableOpacity onPress={() => count < 20 && setCount(count+1)}>
+                <Text className='text-xl font-bold text-white'>+</Text>
+              </TouchableOpacity>  
+            </View>
+          </View>
         </View>
         <View className='mt-5 flex-row items-center'>
           <Entypo name="star" color={"gold"} size={22}/>
@@ -74,11 +84,7 @@ function ProductDetailsScreen() {
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi odit veritatis odio obcaecati, enim laudantium facilis voluptates eos iure ratione, unde eius, incidunt ipsum ullam distinctio quod maiores nesciunt non?
           </Text>
         </View>    
-        <TouchableOpacity onPress={() => handleAddToCart(item)} className='mt-8 bg-green-500 p-4 rounded-3xl items-center'>
-            <Text className='text-white text-2xl font-semibold'>
-                Add to cart
-            </Text>
-        </TouchableOpacity>
+        <Button name='Add to cart' redirect='CART' handleAddtoCart={handleAddToCart} item={item}/>
       </View>
     </View>
   );
