@@ -11,11 +11,29 @@
       },
       {
         "id" : 1,
+        "name": "California roll Sushi",
+        "image": "https://e7.pngegg.com/pngimages/654/912/png-clipart-california-roll-sushi-pizza-sushi-pizza-makizushi-sushi-food-recipe-thumbnail.png",
+        "time": "15",
+        "rating": "4.2",
+        "price": "20.00",
+        "tags": ["Popular Choices", "Cheesy"]
+      },
+      {
+        "id" : 2,
+        "name": "tomato cherry",
+        "image": "https://e7.pngegg.com/pngimages/1012/584/png-clipart-tomato-cherry-with-lettuce-and-bell-pepper-salad-juice-caesar-salad-greek-salad-mesclun-fruit-and-vegetable-salad-leaf-vegetable-food-thumbnail.png",
+        "time": "22",
+        "rating": "4.8",
+        "price": "25.00",
+        "tags": ["Popular Choices", "Cheesy"]
+      },
+      {
+        "id" : 3,
         "name": "Margherita Pizza",
-        "image": "https://e7.pngegg.com/pngimages/166/140/png-clipart-greek-salad-caesar-salad-chicken-salad-greek-cuisine-spinach-salad-greek-salad-leaf-vegetable-food-thumbnail.png",
-        "time": "25",
-        "rating": "4.5",
-        "price": "18.00",
+        "image": "https://e7.pngegg.com/pngimages/1012/584/png-clipart-tomato-cherry-with-lettuce-and-bell-pepper-salad-juice-caesar-salad-greek-salad-mesclun-fruit-and-vegetable-salad-leaf-vegetable-food-thumbnail.png",
+        "time": "22",
+        "rating": "4.8",
+        "price": "25.00",
         "tags": ["Popular Choices", "Cheesy"]
       }
     ]

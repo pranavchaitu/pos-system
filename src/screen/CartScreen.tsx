@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import Entypo from 'react-native-vector-icons/Entypo'
@@ -9,25 +9,28 @@ import { useNavigation } from '@react-navigation/native'
 import CartItem from '../components/CartItem'
 import { FlatList } from 'react-native'
 import Button from '../components/Button'
+import { CartContext } from '../context/CartContext'
 
-function CartScreen({ props } : any) {
+function CartScreen() {
   const navigation : any = useNavigation()
+  const { cart } : any = useContext(CartContext)
   return (
     <LinearGradient colors={["#FDF0F3","#FFFBFC"]} className='flex h-screen px-5 '>
       {/* <Header /> */}
+      <View className='flex-row items-center mt-10'>
+        <TouchableOpacity onPress={() => navigation.navigate("HOME")} className='bg-[#dfdcdc] p-2 rounded-lg'>
+          <Ionicons name={"chevron-back"} size={30}/>
+        </TouchableOpacity>
+        <Text className='ml-20 text-3xl font-semibold'>My Cart</Text>
+      </View>
       {/* cart items list */}
       <FlatList
         className='mt-10' 
-        data={[0,1,2,3,4,5,6]}
-        renderItem={CartItem}
-        ListHeaderComponent={
+        data={cart}        
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => <CartItem item={item} />} 
+        ListFooterComponent={
           <>
-            <View className='flex-row items-center'>
-              <TouchableOpacity onPress={() => navigation.navigate("HOME")} className='bg-[#dfdcdc] p-2 rounded-lg'>
-                <Ionicons name={"chevron-back"} size={30}/>
-              </TouchableOpacity>
-              <Text className='ml-24 text-2xl font-semibold'>My Cart</Text>
-            </View>
             {/* payment details */}
             <View className='top-5'>
               <Text className='text-2xl text-black font-semibold'>
@@ -55,25 +58,28 @@ function CartScreen({ props } : any) {
               <Text className='font-bold text-3xl text-black mt-8'>
                 Payment Methods
               </Text>
-              <View className='flex-row items-center justify-between mt-5'>
+              <View className='flex-row items-center justify-between mt-5 mx-5'>
                 <View className='bg-gray-100 p-6 rounded-3xl'>
-                  <Entypo name="paypal" size={44}/>
+                  <Entypo name="paypal" size={33}/>
                 </View>
                 <View className='bg-gray-100 p-6 rounded-3xl'>
-                  <AntDesign name="google" size={44}/>
+                  <AntDesign name="google" size={33}/>
                 </View>
                 <View className='bg-gray-100 p-6 rounded-3xl'>
-                  <FontAwesome name="bitcoin" size={44}/>
+                  <FontAwesome name="bitcoin" size={33}/>
                 </View>
-              </View>
-              <View className='pb-10'>
-                <Button name="Pay Now" redirect='HOME_STACK'/>
               </View>
             </View>
           </>
         }
         showsVerticalScrollIndicator = {false}
+        contentContainerStyle={{
+          paddingBottom : 80
+        }}
       />
+      <View className='pb-20'>
+        <Button name="Pay Now" redirect='HOME_STACK'/>
+      </View>
     </LinearGradient>
   )
 }
