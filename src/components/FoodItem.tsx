@@ -23,7 +23,7 @@ function FoodItem({ props,handleLiked } : any) {
         {/* Image component with rounded corners */}
         <Image
           source={{uri : props.image}}
-          className="h-32 w-32 rounded-xl"
+          className="h-32 w-32 rounded-full"
         />
         <Text className='text-lg font-bold'>
           {props.name}
