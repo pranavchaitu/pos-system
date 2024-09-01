@@ -16,8 +16,6 @@ Here are some screenshots of the app in action:
 ![Order Screen](./src/assets/order-screen.png)
 ![Inventory Management](./src/assets/inventory-management.png)
 
-*Replace the image file paths with the actual paths where your images are stored.*
-
 ## Getting Started
 
 To get started with this project, follow these steps:
@@ -80,3 +78,4 @@ npm run ios
 # OR using Yarn
 yarn ios
 ```
+All set.
