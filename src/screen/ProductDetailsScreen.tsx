@@ -8,9 +8,9 @@ import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import Button from '../components/Button';
 import { CartContext } from '../context/CartContext';
 
-// type for the route parameters
-type ProductDetailsScreenRouteProp = RouteProp<{ 
-  params: { 
+// Type for the route parameters
+type ProductDetailsScreenRouteProp = RouteProp<{
+  params: {
     props: {
       id: number;
       name: string;
@@ -18,26 +18,30 @@ type ProductDetailsScreenRouteProp = RouteProp<{
       image: string;
       rating: number;
       time: number;
-    } 
-  } 
+    };
+  };
 }, 'params'>;
 
 function ProductDetailsScreen() {
   const route = useRoute<ProductDetailsScreenRouteProp>();
   const navigation : any = useNavigation();
   const { addToCart } : any = useContext(CartContext);
-  const [count,setCount] = useState(1)
+  const [count, setCount] = useState(1);
 
   // Extract item from route params
   const item = route.params.props;
 
-  const handleAddToCart = (item :any) => {
-    item.count = count
+  /**
+   * Handles adding the item to the cart with the specified count.
+   * Navigates to the Cart screen upon successful addition.
+   * 
+   * @param {object} item - The food item to be added to the cart.
+   */
+  const handleAddToCart = (item: any) => {
+    item.count = count;
     addToCart(item); 
-    navigation.navigate("CART")
+    navigation.navigate("CART");
   };
-
-  // const condition = count > 1 && count < 20
 
   return (
     <View className='bg-green-500 flex h-screen relative'>
@@ -54,17 +58,17 @@ function ProductDetailsScreen() {
         <View className='flex-row justify-between'>
           <View className='space-y-2'>
             <Text className='text-2xl font-bold text-black'>{item.name}</Text>
-            <Text className='text-green-500 text-3xl font-bold'>${item.price/100}.00</Text>
+            <Text className='text-green-500 text-3xl font-bold'>${item.price / 100}.00</Text>
           </View>
           <View className='bg-green-500 my-4 px-5 rounded-3xl flex justify-center items-center'>
             <View className='flex-row gap-4 items-center'>
-              <TouchableOpacity onPress={() => count > 1 && setCount(count-1)}>
+              <TouchableOpacity onPress={() => count > 1 && setCount(count - 1)}>
                 <Text className='text-2xl font-bold text-white'>-</Text>
               </TouchableOpacity>
               <Text className='text-2xl border-l border-r px-2 border-green-600 font-bold text-white'>
                 {count}
               </Text>  
-              <TouchableOpacity onPress={() => count < 20 && setCount(count+1)}>
+              <TouchableOpacity onPress={() => count < 20 && setCount(count + 1)}>
                 <Text className='text-2xl font-bold text-white'>+</Text>
               </TouchableOpacity>  
             </View>
@@ -72,18 +76,18 @@ function ProductDetailsScreen() {
         </View>
         <View className='mt-5 flex-row items-center justify-between'>
           <View className='flex-row items-center'>
-            <Entypo name="star" size={22} color={"gold"}/>
+            <Entypo name="star" size={22} color={"gold"} />
             <Text className='ml-2 text-lg text-gray-500'>{item.rating}</Text>  
           </View>
           <View className='flex-row items-center'>
-            <Fontisto name="blood-drop" size={22} color={"red"}/>
+            <Fontisto name="blood-drop" size={22} color={"red"} />
             <Text className='ml-2 text-lg'>100 Kcal</Text>  
           </View>
           <View className='flex-row items-center'>
-            <AntDesign name="clockcircle" size={22} color={"gold"}/>
+            <AntDesign name="clockcircle" size={22} color={"gold"} />
             <Text className='ml-2 text-lg'>{item.time} min</Text>  
           </View>
-          </View>  
+        </View>  
         <View className='mt-8'>
           <Text className='text-xl mb-1 font-bold text-black'>
             About food
@@ -92,7 +96,7 @@ function ProductDetailsScreen() {
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi odit veritatis odio obcaecati, enim laudantium facilis voluptates eos iure ratione, unde eius, incidunt ipsum ullam distinctio quod maiores nesciunt non?
           </Text>
         </View>    
-        <Button name='Add to cart' redirect='CART' handleAddtoCart={handleAddToCart} item={item}/>
+        <Button name='Add to cart' redirect='CART' handleAddtoCart={() => handleAddToCart(item)} item={item} />
       </View>
     </View>
   );
