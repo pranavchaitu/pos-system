@@ -10,6 +10,7 @@ import ProductDetailsScreen from './src/screen/ProductDetailsScreen';
 import CartScreen from './src/screen/CartScreen';
 import { CartContext, CartProvider } from './src/context/CartContext';
 import HomeScreen from './src/screen/HomeScreen';
+import OrderScreen from './src/screen/OrderScreen';
 
 function SettingsScreen() {
   return (
@@ -45,7 +46,7 @@ export default function App() {
           tabBarActiveTintColor : "#E96E6E"
         }}
         // to be changed after - TODO
-        // initialRouteName='CART'
+        initialRouteName='ORDERS'
         >
           <Tab.Screen name="HOME_STACK" component={MyHomeStack} options={{
               tabBarIcon : ({ size,color }) => <Entypo name="home" size={size}
@@ -65,7 +66,7 @@ export default function App() {
                 </>
               }
           }}/>
-          <Tab.Screen name="SETTINGS" component={SettingsScreen} options={{
+          <Tab.Screen name="ORDERS" component={OrderScreen} options={{
               tabBarIcon : ({ size,color }) => <FontAwesome6 name="user" size={size}
               color={color}/>
           }}/>
